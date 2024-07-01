@@ -15,7 +15,7 @@ import numpy as np
 
 @ComfyNode(color="#0066cc", bg_color="#ffcc00", return_names=["Below", "Above"])
 def draw_box_inplace_with_mask(bg_image: ImageTensor, mask: MaskTensor,
-                    width: float = NumberInput(0.5, 1, 2, 3, display="slider")) -> ImageTensor:
+                    width: float = NumberInput(0.5, 1, 2, 3, display="slider")) -> tuple[ImageTensor, ImageTensor]:
     """Draw a bounding box associated with the binary mask on the image(inplace)."""
 
     # augment the mask
@@ -25,7 +25,7 @@ def draw_box_inplace_with_mask(bg_image: ImageTensor, mask: MaskTensor,
     print(bg_image.shape)
     print(mask.shape)
 
-    return 
+    return bg_image, mask
 
 # def draw_mask_bboxes_tensor(image_tensor, mask_tensor, color=(0, 255, 0), thickness=3):
 #     """
